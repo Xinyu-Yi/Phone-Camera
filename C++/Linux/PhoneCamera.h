@@ -21,7 +21,7 @@ public:
     /// <summary>
     /// Whether the connection is opened.
     /// </summary>
-    bool isOpen() const { return is_open; }
+    bool isOpened() const { return is_open; }
 
     /// <summary>
     /// Get the timestamp in milliseconds with get(cv::CAP_PROP_POS_MSEC).

@@ -12,4 +12,9 @@ A server in Windows is implemented in `C++/Windows/` using Visual Studio 2019. I
 
 ## Linux (Server)
 
-A server in Linux is implemented in `C++/Linux/` using cmake. It is nearly the same as Windows expect for several interfaces (e.g., string port or int port).
+A server in Linux is implemented in `C++/Linux/` using cmake. It is nearly the same as Windows expect for several interfaces (e.g., string port or int port). It has a python wrapper. See example codes for details.
+
+## Update Logs
+
+- *2022.09.14: Add python wrapper for Linux server. Change `isOpen()` to `isOpened()` in Linux codes. Windows codes are not modified.*
+

@@ -69,7 +69,7 @@ void PhoneCamera::run() {
         // receive header
         int len = recv(client_socket, header, sizeof(char) * 22, MSG_WAITALL);
         if (len > 0 && !(len == 22 && header[0] == 'b' && header[21] == 'e')) {
-            printf("decode header failed\n");
+            printf("Error: decode header failed\n");
             delete[] header;
             delete[] raw_image;
             close(client_socket);
@@ -98,7 +98,7 @@ void PhoneCamera::run() {
         // receive image
         len = recv(client_socket, raw_image, image_size, MSG_WAITALL);
         if (len > 0 && len != image_size) {
-            printf("decode image failed\n");
+            printf("Error: decode image failed\n");
             delete[] header;
             delete[] raw_image;
             close(client_socket);
@@ -132,7 +132,7 @@ void PhoneCamera::run() {
 }
 
 PhoneCamera &PhoneCamera::operator>>(cv::Mat &output_image) {
-    while (isOpen()) {
+    while (isOpened()) {
         mutex.lock();
         if (!image_buf.empty()) {
             output_image = std::move(image_buf.front());
@@ -153,6 +153,7 @@ PhoneCamera &PhoneCamera::operator>>(cv::Mat &output_image) {
 double PhoneCamera::get(cv::VideoCaptureProperties n) const {
     switch (n) {
         case cv::CAP_PROP_POS_MSEC: return timestamp * 1000;
-        default: printf("VideoCaptureProperties not defined\n"); exit(-1);
+        default: printf("Error: VideoCaptureProperties not defined\n"); exit(-1);
     }
 }
+

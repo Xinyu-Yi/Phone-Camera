@@ -26,7 +26,7 @@ int main() {
     ofstream output_timestamp;
 
 
-    while (phoneCamera.isOpen() && running) {
+    while (phoneCamera.isOpened() && running) {
         phoneCamera >> image;
         timestamp = phoneCamera.get(cv::CAP_PROP_POS_MSEC);
         cv::imshow("image", image);
@@ -82,3 +82,4 @@ int main() {
     }
     return 0;
 }
+
