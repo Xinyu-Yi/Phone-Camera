@@ -1,5 +1,9 @@
 # Phone-Camera
 
+## Notes
+
+Please install pybind11 by `git submodule update --init` after cloning.
+
 ## Phone (Client)
 
 Codes in `Unity/`, Android build in `Build/cam.apk`. I use `unity 2019.4.16f1c1`. The codes read the phone camera and send the picture/timestamp to the server using a socket in real time.
